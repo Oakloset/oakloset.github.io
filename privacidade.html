@@ -47,8 +47,11 @@
 <strong>Responsável pelo tratamento:</strong> Luís Miguel de Carvalho Ferreira, NIF 197175341, Rua de Baixo, Vila Pereira 9A, 3030-108 Coimbra, Portugal.<br>
 <strong>Contacto de privacidade:</strong> <a href="mailto:wintercodeunip@gmail.com">wintercodeunip@gmail.com</a></p>
 <hr>
+<h2>Âmbito e definições</h2>
+<p>Esta política aplica-se a todos os utilizadores da Oakloset, <strong>independentemente do país onde residam</strong>, sendo dado cumprimento ao <strong>Regulamento Geral sobre a Proteção de Dados (RGPD, UE 2016/679)</strong> sempre que aplicável.</p>
+<p>Por <strong>«dados pessoais»</strong> entende-se qualquer informação relativa a uma pessoa singular identificada ou identificável.</p>
 <h2>1. Quem somos</h2>
-<p>A Oakloset (&quot;nós&quot;) é uma aplicação móvel de gestão de guarda-roupa que usa inteligência artificial para organizar peças de roupa e sugerir outfits. Esta política explica que dados pessoais tratamos, com que finalidade e quais os teus direitos, ao abrigo do <strong>Regulamento Geral sobre a Proteção de Dados (RGPD, UE 2016/679)</strong>.</p>
+<p>A Oakloset (&quot;nós&quot;) é uma aplicação móvel de gestão de guarda-roupa que usa inteligência artificial para organizar peças de roupa e sugerir outfits. Esta política explica que dados pessoais tratamos, com que finalidade e quais os teus direitos.</p>
 <h2>2. Que dados recolhemos</h2>
 <table>
 <thead>
@@ -100,15 +103,29 @@
 <li><strong>Comunicações sobre o beta/novidades</strong> — <em>consentimento</em> (opt-in separado).</li>
 </ul>
 <h2>4. Inteligência artificial</h2>
-<p>As fotos das peças e dados do guarda-roupa são enviados ao fornecedor de modelos de IA (<strong>Anthropic, Claude</strong>) para extrair atributos e gerar sugestões. Estes dados são tratados para responder ao pedido e <strong>não são usados para treinar modelos</strong> ao abrigo dos termos comerciais da API. Ver subprocessadores na secção 6.</p>
-<h2>5. Por quanto tempo guardamos</h2>
+<p>As fotos das peças e dados do guarda-roupa são enviados ao fornecedor de modelos de IA (<strong>Anthropic, Claude</strong>) para extrair atributos e gerar sugestões. Estes dados são tratados apenas para responder ao pedido e <strong>não são usados para treinar modelos</strong> ao abrigo dos termos comerciais da API. Ver subprocessadores na secção 8.</p>
+<ul>
+<li>As fotografias destinam-se a <strong>peças de vestuário</strong>. Se uma imagem incluir pessoas (por exemplo, um outfit vestido), esses dados são igualmente processados pela IA. <strong>Não carregues fotografias de terceiros sem o seu consentimento</strong>, nem imagens que não queiras que sejam processadas desta forma.</li>
+<li>Os resultados gerados por IA (categorias, etiquetas, sugestões de outfit) <strong>podem conter erros ou imprecisões</strong> e devem ser considerados meras sugestões — a decisão é sempre tua.</li>
+</ul>
+<h2>5. Onde guardamos as fotografias</h2>
+<p>As fotografias que carregas são armazenadas no <strong>Amazon S3</strong>, em infraestrutura na <strong>União Europeia (eu-west-1, Irlanda)</strong>, com <strong>cifragem em repouso</strong> e transmissão protegida por HTTPS. O acesso é restrito ao estritamente necessário para operar o serviço. Quando eliminas uma peça ou a tua conta, as fotografias correspondentes são apagadas do armazenamento.</p>
+<h2>6. Armazenamento local e identificadores</h2>
+<p>A app guarda no teu dispositivo a informação necessária ao seu funcionamento:</p>
+<ul>
+<li><strong>Tokens de sessão</strong>, num armazenamento seguro do sistema (Keychain no iOS / Keystore no Android).</li>
+<li><strong>Cópia local (cache)</strong> dos teus dados, para a app responder de forma fluida e funcionar com ligação intermitente.</li>
+<li><strong>Token de notificações push</strong>, se ativares os lembretes.</li>
+</ul>
+<p>Para métricas de utilização usamos um <strong>identificador pseudonimizado associado à tua conta</strong> (ver secção 8). <strong>Não usamos cookies de publicidade</strong> nem partilhamos identificadores para fins publicitários ou de criação de perfis comerciais.</p>
+<h2>7. Por quanto tempo guardamos</h2>
 <ul>
 <li><strong>Dados da conta e conteúdo:</strong> enquanto a conta existir.</li>
-<li><strong>Após eliminação da conta:</strong> apagamos os teus dados (incluindo as fotos no armazenamento) — ver secção 7. Cópias de segurança são purgadas no prazo de 30 dias.</li>
+<li><strong>Após eliminação da conta:</strong> apagamos os teus dados (incluindo as fotos no armazenamento) — ver secção 9. Cópias de segurança são purgadas no prazo de 30 dias.</li>
 <li><strong>Diagnóstico/métricas:</strong> retidos no máximo 90 dias.</li>
 <li><strong>Candidatos ao beta não selecionados:</strong> apagados no fim do recrutamento.</li>
 </ul>
-<h2>6. Com quem partilhamos (subprocessadores)</h2>
+<h2>8. Com quem partilhamos (subprocessadores)</h2>
 <p>Não vendemos dados pessoais. Recorremos a fornecedores que atuam como subprocessadores, com acordos de tratamento (DPA) e, sempre que possível, alojamento na UE:</p>
 <table>
 <thead>
@@ -154,22 +171,23 @@
 <td>EUA</td>
 </tr>
 </tbody></table>
+<p><strong>Sobre as métricas (Mixpanel):</strong> os eventos são enviados para um projeto com <strong>residência de dados na UE</strong> e associados ao <strong>identificador interno da tua conta — nunca ao teu email</strong>. Registamos apenas <em>ações</em> (por exemplo: criar conta, iniciar sessão, adicionar peça, registar outfit, gerar sugestão, ver o ecrã de subscrição) e metadados associados; <strong>nunca enviamos as tuas fotografias nem o conteúdo do guarda-roupa</strong>.</p>
 <p>Transferências para fora do EEE são protegidas por Cláusulas Contratuais-Tipo da Comissão Europeia.</p>
-<h2>7. Os teus direitos (RGPD)</h2>
+<h2>9. Os teus direitos (RGPD)</h2>
 <p>Tens direito a: <strong>acesso, retificação, apagamento, limitação, oposição e portabilidade</strong> dos dados, e a retirar o consentimento a qualquer momento.</p>
 <p>A app permite exercer dois destes diretamente, no ecrã de perfil:</p>
 <ul>
 <li><strong>Exportar os meus dados</strong> — descarregas um ficheiro com todos os teus dados (portabilidade, Art. 20.º).</li>
 <li><strong>Eliminar a conta</strong> — apaga permanentemente a conta, as fotos e os dados associados (Art. 17.º).</li>
 </ul>
-<p>Para os restantes direitos, ou reclamações, contacta <a href="mailto:wintercodeunip@gmail.com">wintercodeunip@gmail.com</a>. Podes também reclamar junto da autoridade de controlo competente (em Portugal, a <strong>CNPD</strong> — cnpd.pt).</p>
-<h2>8. Segurança</h2>
+<p>Para os restantes direitos, ou reclamações, contacta <a href="mailto:wintercodeunip@gmail.com">wintercodeunip@gmail.com</a>. <strong>Responderemos aos teus pedidos no prazo máximo de um mês</strong>, prazo que pode ser prorrogado por mais dois meses em casos complexos (com aviso prévio), nos termos do RGPD. Podes também reclamar junto da autoridade de controlo competente (em Portugal, a <strong>CNPD</strong> — cnpd.pt).</p>
+<h2>10. Segurança</h2>
 <p>Palavras-passe cifradas (bcrypt); <em>tokens</em> de sessão de curta duração com rotação e revogação; comunicação por HTTPS; acesso à base de dados restrito e privado; limitação de tentativas (<em>rate limiting</em>); cabeçalhos de segurança (helmet). Nenhum sistema é 100% seguro, mas aplicamos as medidas técnicas e organizativas adequadas ao risco.</p>
-<h2>9. Crianças</h2>
-<p>A Oakloset não se destina a menores de 16 anos. Não recolhemos conscientemente dados de crianças; se tomarmos conhecimento, apagamos.</p>
-<h2>10. Alterações</h2>
+<h2>11. Crianças</h2>
+<p>A Oakloset não se destina a menores de <strong>16 anos sem autorização parental, quando exigida pela legislação aplicável</strong>. Não recolhemos conscientemente dados de crianças; se tomarmos conhecimento, apagamos.</p>
+<h2>12. Alterações</h2>
 <p>Podemos atualizar esta política. Alterações materiais serão comunicadas na app ou por email. A data no topo indica a versão em vigor.</p>
-<h2>11. Contacto</h2>
+<h2>13. Contacto</h2>
 <p>Luís Miguel de Carvalho Ferreira · <a href="mailto:wintercodeunip@gmail.com">wintercodeunip@gmail.com</a> · Rua de Baixo, Vila Pereira 9A, 3030-108 Coimbra, Portugal</p>
     </article>
     <footer>
