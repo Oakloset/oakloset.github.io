@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Oakloset — O armário inteligente da tua família</title>
+  <meta name="description" content="Organiza o guarda-roupa de toda a família, regista os teus outfits e deixa a IA sugerir-te o que vestir. Entra na lista de espera." />
+
+  <!-- Open Graph (partilha em redes sociais) -->
+  <meta property="og:title" content="Oakloset — O armário inteligente da tua família" />
+  <meta property="og:description" content="Organiza o guarda-roupa, regista outfits e recebe sugestões com IA. Entra na lista de espera e ganha 3 meses de Plus grátis." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://oakloset.com" />
+  <meta property="og:image" content="https://oakloset.com/assets/logo.png" />
+  <meta name="theme-color" content="#24272C" />
+
+  <style>
+    :root {
+      --bg: #24272C;
+      --surface: #2f333a;
+      --border: #3a3f47;
+      --gold: #C19863;
+      --text: #ffffff;
+      --muted: #C9CCD1;
+      --dim: #9aa0a6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    header { padding: 28px 0 8px; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand img { width: 40px; height: 40px; border-radius: 9px; }
+    .brand span { letter-spacing: 3px; font-size: 15px; font-weight: 800; text-transform: uppercase; color: var(--gold); }
+
+    .hero { padding: 56px 0 32px; text-align: center; }
+    .hero h1 { font-size: clamp(30px, 6vw, 48px); line-height: 1.15; margin-bottom: 18px; }
+    .hero h1 .accent { color: var(--gold); }
+    .hero p.sub { font-size: clamp(16px, 2.6vw, 19px); color: var(--muted); max-width: 600px; margin: 0 auto 8px; }
+
+    /* Formulário da lista de espera */
+    .signup { max-width: 480px; margin: 28px auto 0; }
+    .offer { color: var(--gold); font-weight: 600; font-size: 15px; margin-bottom: 14px; }
+    form { display: flex; gap: 10px; flex-wrap: wrap; }
+    input[type="email"] {
+      flex: 1 1 220px; min-width: 0; padding: 14px 16px; font-size: 16px;
+      border-radius: 12px; border: 1px solid var(--border);
+      background: var(--surface); color: var(--text);
+    }
+    input[type="email"]::placeholder { color: var(--dim); }
+    button {
+      flex: 0 0 auto; padding: 14px 24px; font-size: 16px; font-weight: 700;
+      border: 0; border-radius: 12px; background: var(--gold); color: var(--bg);
+      cursor: pointer; transition: opacity .15s;
+    }
+    button:hover { opacity: .9; }
+    button:disabled { opacity: .6; cursor: default; }
+    .msg { margin-top: 14px; font-size: 15px; min-height: 22px; }
+    .msg.ok { color: #7bd88f; }
+    .msg.err { color: #ff8a8a; }
+    .fineprint { margin-top: 12px; font-size: 12px; color: var(--dim); }
+    .fineprint a { color: var(--dim); }
+
+    /* Features */
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; padding: 48px 0 8px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 22px; }
+    .card .ico { font-size: 26px; }
+    .card h3 { font-size: 17px; margin: 10px 0 6px; }
+    .card p { color: var(--muted); font-size: 15px; }
+
+    footer { padding: 48px 0 40px; text-align: center; color: var(--dim); font-size: 13px; }
+    footer a { color: var(--dim); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <img src="assets/logo.png" alt="Oakloset" />
+        <span>Oakloset</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <h1 data-i18n="title">O armário <span class="accent">inteligente</span> da tua família</h1>
+      <p class="sub" data-i18n="subtitle">
+        Organiza o guarda-roupa de toda a família, regista os teus outfits e deixa a IA sugerir-te o que vestir — tudo numa só app.
+      </p>
+
+      <div class="signup">
+        <p class="offer" data-i18n="offer">✨ Entra na lista de espera e ganha 3 meses de Oakloset Plus grátis no lançamento.</p>
+        <form id="waitlist-form" novalidate>
+          <input type="email" id="email" name="email" required autocomplete="email"
+                 data-i18n-ph="emailPlaceholder" placeholder="o-teu@email.com" />
+          <button type="submit" id="submit" data-i18n="cta">Quero entrar</button>
+        </form>
+        <p class="msg" id="msg" role="status" aria-live="polite"></p>
+        <p class="fineprint" data-i18n="fineprint">
+          Sem spam. Só te avisamos no lançamento. Podes sair quando quiseres.
+        </p>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="card">
+        <div class="ico">👨‍👩‍👧</div>
+        <h3 data-i18n="f1t">Vários armários, uma conta</h3>
+        <p data-i18n="f1b">Gere o guarda-roupa de cada membro da família em separado, sem trocar de conta.</p>
+      </div>
+      <div class="card">
+        <div class="ico">🤖</div>
+        <h3 data-i18n="f2t">IA que te conhece</h3>
+        <p data-i18n="f2b">Fotografa uma peça e a IA categoriza-a. Recebe sugestões de outfit para cada ocasião e clima.</p>
+      </div>
+      <div class="card">
+        <div class="ico">📆</div>
+        <h3 data-i18n="f3t">O teu histórico de estilo</h3>
+        <p data-i18n="f3b">Regista o que vestes, vê o calendário e descobre o que usas (e o que esqueces).</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>© <span id="year"></span> Oakloset · <a href="privacidade.html">Privacidade</a> · <a href="termos.html">Termos</a> · <a href="mailto:wintercodeunip@gmail.com">wintercodeunip@gmail.com</a></p>
+    </footer>
+  </div>
+
+  <script>
+    // Endpoint público da lista de espera (API Oakloset).
+    var API_URL = 'https://api.oakloset.com/waitlist';
+
+    // i18n leve: PT (default) + EN, escolhido por navigator.language.
+    var I18N = {
+      pt: {
+        title: 'O armário <span class="accent">inteligente</span> da tua família',
+        subtitle: 'Organiza o guarda-roupa de toda a família, regista os teus outfits e deixa a IA sugerir-te o que vestir — tudo numa só app.',
+        offer: '✨ Entra na lista de espera e ganha 3 meses de Oakloset Plus grátis no lançamento.',
+        emailPlaceholder: 'o-teu@email.com',
+        cta: 'Quero entrar',
+        fineprint: 'Sem spam. Só te avisamos no lançamento. Podes sair quando quiseres.',
+        f1t: 'Vários armários, uma conta', f1b: 'Gere o guarda-roupa de cada membro da família em separado, sem trocar de conta.',
+        f2t: 'IA que te conhece', f2b: 'Fotografa uma peça e a IA categoriza-a. Recebe sugestões de outfit para cada ocasião e clima.',
+        f3t: 'O teu histórico de estilo', f3b: 'Regista o que vestes, vê o calendário e descobre o que usas (e o que esqueces).',
+        sending: 'A inscrever…', ok: 'Estás dentro! 🎉 Avisamos-te no lançamento.',
+        errEmail: 'Escreve um email válido.', errGeneric: 'Algo correu mal. Tenta de novo.'
+      },
+      en: {
+        title: 'Your family’s <span class="accent">smart</span> wardrobe',
+        subtitle: 'Organise your whole family’s wardrobe, log your outfits and let AI suggest what to wear — all in one app.',
+        offer: '✨ Join the waitlist and get 3 months of Oakloset Plus free at launch.',
+        emailPlaceholder: 'you@email.com',
+        cta: 'Join',
+        fineprint: 'No spam. We’ll only ping you at launch. Unsubscribe anytime.',
+        f1t: 'Many wardrobes, one account', f1b: 'Manage each family member’s wardrobe separately, without switching accounts.',
+        f2t: 'AI that knows you', f2b: 'Snap a photo and the AI tags it. Get outfit suggestions for every occasion and the weather.',
+        f3t: 'Your style history', f3b: 'Log what you wear, see the calendar and find out what you use (and forget).',
+        sending: 'Joining…', ok: 'You’re in! 🎉 We’ll let you know at launch.',
+        errEmail: 'Enter a valid email.', errGeneric: 'Something went wrong. Try again.'
+      }
+    };
+
+    var lang = (navigator.language || 'pt').slice(0, 2).toLowerCase();
+    if (!I18N[lang]) lang = 'pt';
+    var t = I18N[lang];
+    document.documentElement.lang = lang;
+
+    // Aplica as traduções (texto e placeholders).
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (t[key]) el.innerHTML = t[key];
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-ph');
+      if (t[key]) el.setAttribute('placeholder', t[key]);
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Origem (UTM/ref) para métricas.
+    var params = new URLSearchParams(location.search);
+    var source = params.get('utm_source') || params.get('ref') || null;
+
+    var form = document.getElementById('waitlist-form');
+    var emailEl = document.getElementById('email');
+    var btn = document.getElementById('submit');
+    var msg = document.getElementById('msg');
+    var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = emailEl.value.trim();
+      msg.className = 'msg';
+      if (!EMAIL_RE.test(email)) { msg.textContent = t.errEmail; msg.className = 'msg err'; return; }
+
+      btn.disabled = true;
+      msg.textContent = t.sending;
+      fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, language: lang, source: source })
+      })
+        .then(function (r) {
+          if (!r.ok && r.status !== 201) throw new Error('http ' + r.status);
+          msg.textContent = t.ok; msg.className = 'msg ok';
+          form.reset();
+        })
+        .catch(function () { msg.textContent = t.errGeneric; msg.className = 'msg err'; })
+        .finally(function () { btn.disabled = false; });
+    });
+  </script>
+</body>
+</html>
