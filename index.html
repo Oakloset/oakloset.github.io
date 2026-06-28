@@ -37,8 +37,12 @@
     }
     .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
 
-    header { padding: 28px 0 8px; }
+    header { padding: 28px 0 8px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
     .brand { display: flex; align-items: center; gap: 12px; }
+    .langsel { display: flex; gap: 2px; flex-shrink: 0; }
+    .langsel button { background: none; border: 0; color: var(--dim); font-size: 13px; font-weight: 700;
+                      letter-spacing: 1px; padding: 4px 6px; cursor: pointer; text-transform: uppercase; transition: color .15s; }
+    .langsel button.active { color: var(--gold); }
     .brand img { width: 56px; height: 56px; border-radius: 13px; }
     .brand span { letter-spacing: 3px; font-size: 20px; font-weight: 800; text-transform: uppercase; color: var(--gold); }
 
@@ -94,16 +98,22 @@
         <img src="assets/favicon.png" alt="OaKloset" />
         <span>OaKloset</span>
       </div>
+      <nav class="langsel" id="langsel" aria-label="Idioma">
+        <button type="button" data-lang="pt">PT</button>
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="fr">FR</button>
+        <button type="button" data-lang="es">ES</button>
+      </nav>
     </header>
 
     <section class="hero">
       <h1 data-i18n="title">Sê dos <span class="accent">100 primeiros</span> a testar o OaKloset</h1>
       <p class="sub" data-i18n="subtitle">
-        Procuramos 100 testers para o beta privado da app que organiza o guarda-roupa da família com IA. Em troca do teu feedback, ganhas 1 ano de OaKloset Plus.
+        Procuramos 100 testers para um beta privado de 30 dias da app que organiza o guarda-roupa da família com IA. Em troca do teu feedback, ganhas 6 meses de OaKloset Plus.
       </p>
 
       <div class="signup">
-        <p class="offer" data-i18n="offer">✨ 1 ano de OaKloset Plus grátis para os 100 primeiros testers.</p>
+        <p class="offer" data-i18n="offer">✨ 6 meses de OaKloset Plus grátis para os 100 primeiros testers.</p>
         <form id="waitlist-form" novalidate>
           <div class="platforms" id="platforms" role="group" aria-label="Plataforma">
             <button type="button" class="plat" data-platform="android" data-i18n="platAndroid">🤖 Android</button>
@@ -117,7 +127,7 @@
         </form>
         <p class="msg" id="msg" role="status" aria-live="polite"></p>
         <p class="fineprint" data-i18n="fineprint">
-          Vagas limitadas a 100. Procuramos quem use a app a sério e partilhe feedback. Sem spam.
+          Beta de 30 dias, vagas limitadas a 100. Procuramos quem use a app a sério e partilhe feedback. Sem spam.
         </p>
       </div>
     </section>
@@ -153,12 +163,12 @@
     var I18N = {
       pt: {
         title: 'Sê dos <span class="accent">100 primeiros</span> a testar o OaKloset',
-        subtitle: 'Procuramos 100 testers para o beta privado da app que organiza o guarda-roupa da família com IA. Em troca do teu feedback, ganhas 1 ano de OaKloset Plus.',
-        offer: '✨ 1 ano de OaKloset Plus grátis para os 100 primeiros testers.',
+        subtitle: 'Procuramos 100 testers para um beta privado de 30 dias da app que organiza o guarda-roupa da família com IA. Em troca do teu feedback, ganhas 6 meses de OaKloset Plus.',
+        offer: '✨ 6 meses de OaKloset Plus grátis para os 100 primeiros testers.',
         platAndroid: '🤖 Android', platIos: '🍎 iPhone',
         emailPlaceholder: 'o-teu@email.com',
         cta: 'Quero ser tester',
-        fineprint: 'Vagas limitadas a 100. Procuramos quem use a app a sério e partilhe feedback. Sem spam.',
+        fineprint: 'Beta de 30 dias, vagas limitadas a 100. Procuramos quem use a app a sério e partilhe feedback. Sem spam.',
         f1t: 'Vários armários, uma conta', f1b: 'Gere o guarda-roupa de cada membro da família em separado, sem trocar de conta.',
         f2t: 'IA que te conhece', f2b: 'Fotografa uma peça e a IA categoriza-a. Recebe sugestões de outfit para cada ocasião e clima.',
         f3t: 'O teu histórico de estilo', f3b: 'Regista o que vestes, vê o calendário e descobre o que usas (e o que esqueces).',
@@ -167,33 +177,71 @@
       },
       en: {
         title: 'Be one of the <span class="accent">first 100</span> to test OaKloset',
-        subtitle: 'We’re looking for 100 testers for the private beta of the app that organises your family’s wardrobe with AI. In exchange for your feedback, you get 1 year of OaKloset Plus.',
-        offer: '✨ 1 year of OaKloset Plus free for the first 100 testers.',
+        subtitle: 'We’re looking for 100 testers for a 30-day private beta of the app that organises your family’s wardrobe with AI. In exchange for your feedback, you get 6 months of OaKloset Plus.',
+        offer: '✨ 6 months of OaKloset Plus free for the first 100 testers.',
         platAndroid: '🤖 Android', platIos: '🍎 iPhone',
         emailPlaceholder: 'you@email.com',
         cta: 'I want in',
-        fineprint: 'Limited to 100 spots. We want people who’ll really use the app and share feedback. No spam.',
+        fineprint: '30-day beta, limited to 100 spots. We want people who’ll really use the app and share feedback. No spam.',
         f1t: 'Many wardrobes, one account', f1b: 'Manage each family member’s wardrobe separately, without switching accounts.',
         f2t: 'AI that knows you', f2b: 'Snap a photo and the AI tags it. Get outfit suggestions for every occasion and the weather.',
         f3t: 'Your style history', f3b: 'Log what you wear, see the calendar and find out what you use (and forget).',
         sending: 'Sending…', ok: 'Application received! 🎉 We’ll be in touch soon.',
         errEmail: 'Enter a valid email.', errPlatform: 'Choose your platform.', errGeneric: 'Something went wrong. Try again.'
+      },
+      fr: {
+        title: 'Sois parmi les <span class="accent">100 premiers</span> à tester OaKloset',
+        subtitle: 'Nous cherchons 100 testeurs pour une bêta privée de 30 jours de l’app qui organise la garde-robe de la famille avec l’IA. En échange de ton avis, tu reçois 6 mois d’OaKloset Plus.',
+        offer: '✨ 6 mois d’OaKloset Plus offerts pour les 100 premiers testeurs.',
+        platAndroid: '🤖 Android', platIos: '🍎 iPhone',
+        emailPlaceholder: 'toi@email.com',
+        cta: 'Je veux participer',
+        fineprint: 'Bêta de 30 jours, places limitées à 100. On cherche des gens qui utilisent vraiment l’app et partagent leur avis. Pas de spam.',
+        f1t: 'Plusieurs garde-robes, un compte', f1b: 'Gère la garde-robe de chaque membre de la famille séparément, sans changer de compte.',
+        f2t: 'Une IA qui te connaît', f2b: 'Prends une photo et l’IA la catégorise. Reçois des suggestions de tenue pour chaque occasion et la météo.',
+        f3t: 'Ton historique de style', f3b: 'Note ce que tu portes, vois le calendrier et découvre ce que tu utilises (et oublies).',
+        sending: 'Envoi…', ok: 'Candidature reçue ! 🎉 On te contacte bientôt.',
+        errEmail: 'Saisis un email valide.', errPlatform: 'Choisis ta plateforme.', errGeneric: 'Une erreur est survenue. Réessaie.'
+      },
+      es: {
+        title: 'Sé de los <span class="accent">100 primeros</span> en probar OaKloset',
+        subtitle: 'Buscamos 100 testers para una beta privada de 30 días de la app que organiza el armario de la familia con IA. A cambio de tu feedback, consigues 6 meses de OaKloset Plus.',
+        offer: '✨ 6 meses de OaKloset Plus gratis para los 100 primeros testers.',
+        platAndroid: '🤖 Android', platIos: '🍎 iPhone',
+        emailPlaceholder: 'tu@email.com',
+        cta: 'Quiero participar',
+        fineprint: 'Beta de 30 días, plazas limitadas a 100. Buscamos a quien use la app de verdad y comparta su opinión. Sin spam.',
+        f1t: 'Varios armarios, una cuenta', f1b: 'Gestiona el armario de cada miembro de la familia por separado, sin cambiar de cuenta.',
+        f2t: 'Una IA que te conoce', f2b: 'Haz una foto y la IA la clasifica. Recibe sugerencias de outfit para cada ocasión y el clima.',
+        f3t: 'Tu historial de estilo', f3b: 'Registra lo que te pones, mira el calendario y descubre qué usas (y qué olvidas).',
+        sending: 'Enviando…', ok: '¡Candidatura recibida! 🎉 Te contactamos pronto.',
+        errEmail: 'Escribe un email válido.', errPlatform: 'Elige tu plataforma.', errGeneric: 'Algo salió mal. Inténtalo de nuevo.'
       }
     };
 
-    var lang = (navigator.language || 'pt').slice(0, 2).toLowerCase();
-    if (!I18N[lang]) lang = 'pt';
-    var t = I18N[lang];
-    document.documentElement.lang = lang;
+    // Idioma: escolha guardada > idioma do browser > pt. O seletor no header troca e persiste.
+    var lang, t;
+    function applyLang(l) {
+      if (!I18N[l]) l = 'pt';
+      lang = l;
+      t = I18N[l];
+      document.documentElement.lang = l;
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n'); if (t[key]) el.innerHTML = t[key];
+      });
+      document.querySelectorAll('[data-i18n-ph]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n-ph'); if (t[key]) el.setAttribute('placeholder', t[key]);
+      });
+      document.querySelectorAll('#langsel button').forEach(function (b) {
+        b.classList.toggle('active', b.getAttribute('data-lang') === l);
+      });
+      try { localStorage.setItem('oak_lang', l); } catch (e) {}
+    }
 
-    // Aplica as traduções (texto e placeholders).
-    document.querySelectorAll('[data-i18n]').forEach(function (el) {
-      var key = el.getAttribute('data-i18n');
-      if (t[key]) el.innerHTML = t[key];
-    });
-    document.querySelectorAll('[data-i18n-ph]').forEach(function (el) {
-      var key = el.getAttribute('data-i18n-ph');
-      if (t[key]) el.setAttribute('placeholder', t[key]);
+    var saved = null; try { saved = localStorage.getItem('oak_lang'); } catch (e) {}
+    applyLang(saved || (navigator.language || 'pt').slice(0, 2).toLowerCase());
+    document.querySelectorAll('#langsel button').forEach(function (b) {
+      b.addEventListener('click', function () { applyLang(b.getAttribute('data-lang')); });
     });
     document.getElementById('year').textContent = new Date().getFullYear();
 
