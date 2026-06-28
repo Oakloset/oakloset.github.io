@@ -6,11 +6,11 @@
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="apple-touch-icon" href="assets/favicon.png" />
   <title>OaKloset — O armário inteligente da tua família</title>
-  <meta name="description" content="Organiza o guarda-roupa de toda a família, regista os teus outfits e deixa a IA sugerir-te o que vestir. Entra na lista de espera." />
+  <meta name="description" content="Sê dos 100 primeiros a testar o OaKloset — a app que organiza o guarda-roupa da família com IA. Candidata-te ao beta e ganha 1 ano de Plus grátis." />
 
   <!-- Open Graph (partilha em redes sociais) -->
   <meta property="og:title" content="OaKloset — O armário inteligente da tua família" />
-  <meta property="og:description" content="Organiza o guarda-roupa, regista outfits e recebe sugestões com IA. Entra na lista de espera e ganha 3 meses de Plus grátis." />
+  <meta property="og:description" content="Candidata-te ao beta privado do OaKloset e ganha 1 ano de Plus grátis. Vagas limitadas a 100 testers." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://oakloset.com" />
   <meta property="og:image" content="https://oakloset.com/assets/logo.png" />
@@ -50,7 +50,13 @@
     /* Formulário da lista de espera */
     .signup { max-width: 480px; margin: 28px auto 0; }
     .offer { color: var(--gold); font-weight: 600; font-size: 15px; margin-bottom: 14px; }
-    form { display: flex; gap: 10px; flex-wrap: wrap; }
+    form { display: flex; flex-direction: column; gap: 10px; }
+    .platforms { display: flex; gap: 10px; }
+    .plat { flex: 1; padding: 13px 12px; border-radius: 12px; border: 1px solid var(--border);
+            background: var(--surface); color: var(--muted); font-size: 15px; font-weight: 700;
+            cursor: pointer; transition: border-color .15s, color .15s, background .15s; }
+    .plat.selected { border-color: var(--gold); color: var(--gold); background: rgba(193,152,99,0.12); }
+    .emailrow { display: flex; gap: 10px; flex-wrap: wrap; }
     input[type="email"] {
       flex: 1 1 220px; min-width: 0; padding: 14px 16px; font-size: 16px;
       border-radius: 12px; border: 1px solid var(--border);
@@ -91,21 +97,27 @@
     </header>
 
     <section class="hero">
-      <h1 data-i18n="title">O armário <span class="accent">inteligente</span> da tua família</h1>
+      <h1 data-i18n="title">Sê dos <span class="accent">100 primeiros</span> a testar o OaKloset</h1>
       <p class="sub" data-i18n="subtitle">
-        Organiza o guarda-roupa de toda a família, regista os teus outfits e deixa a IA sugerir-te o que vestir — tudo numa só app.
+        Procuramos 100 testers para o beta privado da app que organiza o guarda-roupa da família com IA. Em troca do teu feedback, ganhas 1 ano de OaKloset Plus.
       </p>
 
       <div class="signup">
-        <p class="offer" data-i18n="offer">✨ Entra na lista de espera e ganha 3 meses de OaKloset Plus grátis no lançamento.</p>
+        <p class="offer" data-i18n="offer">✨ 1 ano de OaKloset Plus grátis para os 100 primeiros testers.</p>
         <form id="waitlist-form" novalidate>
-          <input type="email" id="email" name="email" required autocomplete="email"
-                 data-i18n-ph="emailPlaceholder" placeholder="o-teu@email.com" />
-          <button type="submit" id="submit" data-i18n="cta">Quero entrar</button>
+          <div class="platforms" id="platforms" role="group" aria-label="Plataforma">
+            <button type="button" class="plat" data-platform="android" data-i18n="platAndroid">🤖 Android</button>
+            <button type="button" class="plat" data-platform="ios" data-i18n="platIos">🍎 iPhone</button>
+          </div>
+          <div class="emailrow">
+            <input type="email" id="email" name="email" required autocomplete="email"
+                   data-i18n-ph="emailPlaceholder" placeholder="o-teu@email.com" />
+            <button type="submit" id="submit" data-i18n="cta">Quero ser tester</button>
+          </div>
         </form>
         <p class="msg" id="msg" role="status" aria-live="polite"></p>
         <p class="fineprint" data-i18n="fineprint">
-          Sem spam. Só te avisamos no lançamento. Podes sair quando quiseres.
+          Vagas limitadas a 100. Procuramos quem use a app a sério e partilhe feedback. Sem spam.
         </p>
       </div>
     </section>
@@ -140,30 +152,32 @@
     // i18n leve: PT (default) + EN, escolhido por navigator.language.
     var I18N = {
       pt: {
-        title: 'O armário <span class="accent">inteligente</span> da tua família',
-        subtitle: 'Organiza o guarda-roupa de toda a família, regista os teus outfits e deixa a IA sugerir-te o que vestir — tudo numa só app.',
-        offer: '✨ Entra na lista de espera e ganha 3 meses de OaKloset Plus grátis no lançamento.',
+        title: 'Sê dos <span class="accent">100 primeiros</span> a testar o OaKloset',
+        subtitle: 'Procuramos 100 testers para o beta privado da app que organiza o guarda-roupa da família com IA. Em troca do teu feedback, ganhas 1 ano de OaKloset Plus.',
+        offer: '✨ 1 ano de OaKloset Plus grátis para os 100 primeiros testers.',
+        platAndroid: '🤖 Android', platIos: '🍎 iPhone',
         emailPlaceholder: 'o-teu@email.com',
-        cta: 'Quero entrar',
-        fineprint: 'Sem spam. Só te avisamos no lançamento. Podes sair quando quiseres.',
+        cta: 'Quero ser tester',
+        fineprint: 'Vagas limitadas a 100. Procuramos quem use a app a sério e partilhe feedback. Sem spam.',
         f1t: 'Vários armários, uma conta', f1b: 'Gere o guarda-roupa de cada membro da família em separado, sem trocar de conta.',
         f2t: 'IA que te conhece', f2b: 'Fotografa uma peça e a IA categoriza-a. Recebe sugestões de outfit para cada ocasião e clima.',
         f3t: 'O teu histórico de estilo', f3b: 'Regista o que vestes, vê o calendário e descobre o que usas (e o que esqueces).',
-        sending: 'A inscrever…', ok: 'Estás dentro! 🎉 Avisamos-te no lançamento.',
-        errEmail: 'Escreve um email válido.', errGeneric: 'Algo correu mal. Tenta de novo.'
+        sending: 'A enviar…', ok: 'Candidatura recebida! 🎉 Entramos em contacto em breve.',
+        errEmail: 'Escreve um email válido.', errPlatform: 'Escolhe a tua plataforma.', errGeneric: 'Algo correu mal. Tenta de novo.'
       },
       en: {
-        title: 'Your family’s <span class="accent">smart</span> wardrobe',
-        subtitle: 'Organise your whole family’s wardrobe, log your outfits and let AI suggest what to wear — all in one app.',
-        offer: '✨ Join the waitlist and get 3 months of OaKloset Plus free at launch.',
+        title: 'Be one of the <span class="accent">first 100</span> to test OaKloset',
+        subtitle: 'We’re looking for 100 testers for the private beta of the app that organises your family’s wardrobe with AI. In exchange for your feedback, you get 1 year of OaKloset Plus.',
+        offer: '✨ 1 year of OaKloset Plus free for the first 100 testers.',
+        platAndroid: '🤖 Android', platIos: '🍎 iPhone',
         emailPlaceholder: 'you@email.com',
-        cta: 'Join',
-        fineprint: 'No spam. We’ll only ping you at launch. Unsubscribe anytime.',
+        cta: 'I want in',
+        fineprint: 'Limited to 100 spots. We want people who’ll really use the app and share feedback. No spam.',
         f1t: 'Many wardrobes, one account', f1b: 'Manage each family member’s wardrobe separately, without switching accounts.',
         f2t: 'AI that knows you', f2b: 'Snap a photo and the AI tags it. Get outfit suggestions for every occasion and the weather.',
         f3t: 'Your style history', f3b: 'Log what you wear, see the calendar and find out what you use (and forget).',
-        sending: 'Joining…', ok: 'You’re in! 🎉 We’ll let you know at launch.',
-        errEmail: 'Enter a valid email.', errGeneric: 'Something went wrong. Try again.'
+        sending: 'Sending…', ok: 'Application received! 🎉 We’ll be in touch soon.',
+        errEmail: 'Enter a valid email.', errPlatform: 'Choose your platform.', errGeneric: 'Something went wrong. Try again.'
       }
     };
 
@@ -193,23 +207,41 @@
     var msg = document.getElementById('msg');
     var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+    // Seleção de plataforma (Android / iPhone) — obrigatória para o recrutamento do beta.
+    var selectedPlatform = null;
+    var platBtns = document.querySelectorAll('.plat');
+    platBtns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        platBtns.forEach(function (x) { x.classList.remove('selected'); });
+        b.classList.add('selected');
+        selectedPlatform = b.getAttribute('data-platform');
+        if (msg.className.indexOf('err') !== -1) { msg.className = 'msg'; msg.textContent = ''; }
+      });
+    });
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var email = emailEl.value.trim();
       msg.className = 'msg';
+      if (!selectedPlatform) { msg.textContent = t.errPlatform; msg.className = 'msg err'; return; }
       if (!EMAIL_RE.test(email)) { msg.textContent = t.errEmail; msg.className = 'msg err'; return; }
+
+      // source distingue o recrutamento do beta (e a plataforma) da waitlist de launch.
+      var src = 'beta-' + selectedPlatform + (source ? '-' + source : '');
 
       btn.disabled = true;
       msg.textContent = t.sending;
       fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, language: lang, source: source })
+        body: JSON.stringify({ email: email, language: lang, source: src })
       })
         .then(function (r) {
           if (!r.ok && r.status !== 201) throw new Error('http ' + r.status);
           msg.textContent = t.ok; msg.className = 'msg ok';
           form.reset();
+          platBtns.forEach(function (x) { x.classList.remove('selected'); });
+          selectedPlatform = null;
         })
         .catch(function () { msg.textContent = t.errGeneric; msg.className = 'msg err'; })
         .finally(function () { btn.disabled = false; });
